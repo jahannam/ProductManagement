@@ -1,5 +1,12 @@
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
-import { type ChartConfig, ChartContainer, ChartLegend, ChartLegendContent } from "@/components/ui/chart"
+import { 
+    type ChartConfig, 
+    ChartContainer, 
+    ChartLegend, 
+    ChartLegendContent, 
+    ChartTooltip, 
+    ChartTooltipContent 
+} from "@/components/ui/chart"
  
 const chartConfig = {
   quantity: {
@@ -30,6 +37,7 @@ return (
             axisLine={false}
         />
         <ChartLegend content={<ChartLegendContent />} />
+        <ChartTooltip content={<ChartTooltipContent />} />
       </BarChart>
     </ChartContainer>
   )
