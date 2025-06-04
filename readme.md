@@ -1,20 +1,28 @@
-This project is a Product Management project
+# Product Management Project
 
-The compenents of this project are:
-    Rest API:
-        Create product
-        Get list of products
-    Database:
-        Database running in postgres
-    Migrations:
-        Used to apply migrations to the database and seed data
-    React frontend:
-        Get list of products and displays in table or graph
+## Components
 
-The project is orchestrated locally using .net Aspire
+- **REST API**
+  - Create product
+  - Get list of products
 
-How to run:
+- **Database**
+  - PostgreSQL database
 
-    Just simply run the AppHost project in Visual Studio or Visual Studio Code
-    This should open the .net Aspire page in the browser
-    To access the frontend, simply click on the url next to the react project
+- **Migrations**
+  - Apply migrations to the database
+  - Seed data
+
+- **React Frontend**
+  - Fetches list of products
+  - Displays products in a table or graph
+
+## Orchestration
+
+The project is orchestrated locally using **.NET Aspire**.
+
+## How to Run
+
+1. Run the `AppHost` project in Visual Studio or Visual Studio Code.
+2. This will open the .NET Aspire page in your browser.
+3. To access the frontend, click on the URL next to the React project.
