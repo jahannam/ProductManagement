@@ -37,13 +37,13 @@ namespace ProductManagement.Application.Tests
         [Fact]
         public async Task SaveProducts_HappyPath()
         {
-            var product = new Product
+            var product = new SaveProduct
             {
                 ProductCode = "P001",
                 Name = "Product 1",
                 Category = "Tool",
                 Price = 7.6M,
-                Quantity = 1
+                Quantity = 1,
             };
             var returnProduct = new Product
             {
@@ -56,7 +56,7 @@ namespace ProductManagement.Application.Tests
                 DateAdded = DateTimeOffset.UtcNow
             };
             _productRepositoryMock.AreProductCodeAndNameBothUnique(product.ProductCode, product.Name).Returns(true);
-            _productRepositoryMock.SaveProduct(product).Returns(returnProduct);
+            _productRepositoryMock.SaveProduct(Arg.Any<Product>()).Returns(returnProduct);
             var result = await _productService.SaveProduct(product);
             result.Success.ShouldBeTrue();
             result.Data.ShouldNotBeNull();
@@ -67,7 +67,7 @@ namespace ProductManagement.Application.Tests
         [Fact]
         public async Task SaveProducts_CodeOrNameNotUnique()
         {
-            var product = new Product
+            var product = new SaveProduct
             {
                 ProductCode = "P001",
                 Name = "Product 1",

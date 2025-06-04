@@ -22,7 +22,7 @@ namespace ProductManagement.Api
             builder.AddNpgsqlDbContext<ProductDbContext>("productdb");
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IProductService, ProductService>();
-            builder.Services.AddScoped<IValidator<Product>, ProductValidator>();
+            builder.Services.AddScoped<IValidator<SaveProduct>, ProductValidator>();
 
             var app = builder.Build();
 

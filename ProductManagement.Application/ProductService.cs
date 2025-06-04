@@ -20,7 +20,7 @@ namespace ProductManagement.Application
             return products;
         }
 
-        public async Task<Result<Product>> SaveProduct(Product productToSave)
+        public async Task<Result<Product>> SaveProduct(SaveProduct productToSave)
         {
             bool isUnique = await _productRepository.AreProductCodeAndNameBothUnique(productToSave.ProductCode, productToSave.Name);
             if (!isUnique)
@@ -28,7 +28,16 @@ namespace ProductManagement.Application
                 return Result<Product>.Fail("Product code and name must be unique.");
             }                
 
-            var newProduct = await _productRepository.SaveProduct(productToSave);
+            var newProduct = await _productRepository.SaveProduct(
+                new Product 
+                { 
+                    Category = productToSave.Category,
+                    Name = productToSave.Name,
+                    DateAdded = DateTimeOffset.UtcNow,
+                    Price = productToSave.Price,
+                    ProductCode = productToSave.ProductCode,
+                    Quantity = productToSave.Quantity,
+                });
 
             return Result<Product>.Ok(newProduct);
         }

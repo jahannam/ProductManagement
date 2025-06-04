@@ -52,29 +52,17 @@ namespace ProductManagement.Infrastructure.Tests
         [Fact]
         public async Task SaveProduct_HappyPath()
         {
-            var start = DateTimeOffset.UtcNow;
-            
             var product = new Product
             {
                 ProductCode = "P001",
                 Name = "Product 1",
                 Category = "Tool",
                 Price = 7.6M,
-                Quantity = 1
-            };
-            var returnProduct = new Product
-            {
-                ProductCode = "P001",
-                Name = "Product 1",
-                Category = "Tool",
-                Price = 7.6M,
                 Quantity = 1,
+                DateAdded = DateTimeOffset.UtcNow
             };
             var result = await _productRepository.SaveProduct(product);
-            result.DateAdded.ShouldBeGreaterThan(start);
-            result.DateAdded.ShouldBeLessThan(DateTimeOffset.UtcNow);
-            returnProduct = returnProduct with { DateAdded = result.DateAdded };
-            result.ShouldBe(returnProduct);
+            result.ShouldBe(product);
         }
 
         [Fact]
@@ -94,7 +82,8 @@ namespace ProductManagement.Infrastructure.Tests
                 Name = "Product 1",
                 Category = "Tool",
                 Price = 7.6M,
-                Quantity = 1
+                Quantity = 1,
+                DateAdded = DateTimeOffset.UtcNow
             };
             _context.Add(product);
             await _context.SaveChangesAsync();

@@ -25,7 +25,6 @@ namespace ProductManagement.Infrastructure
         public async Task<Product> SaveProduct(Product product)
         {
             _dbContext.Products.Add(product);
-            product = product with { DateAdded = DateTimeOffset.UtcNow };  
             await _dbContext.SaveChangesAsync();
             return product;
         }

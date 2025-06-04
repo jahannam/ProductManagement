@@ -5,6 +5,6 @@ namespace ProductManagement.Application
     public interface IProductService
     {
         Task<IReadOnlyList<Product>> GetProducts();
-        Task<Result<Product>> SaveProduct(Product product);
+        Task<Result<Product>> SaveProduct(SaveProduct product);
     }
 }

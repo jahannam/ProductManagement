@@ -12,11 +12,11 @@ namespace ProductManagement.Api.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private readonly IProductService _productService;
-        private readonly IValidator<Product> _validator;
+        private readonly IValidator<SaveProduct> _validator;
 
         public ProductController(ILogger<ProductController> logger, 
             IProductService productService,
-            IValidator<Product> validator)
+            IValidator<SaveProduct> validator)
         {
             _logger = logger;
             _productService = productService;
@@ -30,7 +30,7 @@ namespace ProductManagement.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveProduct(Product product)
+        public async Task<IActionResult> SaveProduct(SaveProduct product)
         {
             var validationResult = await _validator.ValidateAsync(product);
             if (!validationResult.IsValid)

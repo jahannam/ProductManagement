@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using ProductManagement.Domain;
 
-namespace ProductManagement.Api
+namespace ProductManagement.Application
 {
-    public class ProductValidator : AbstractValidator<Product>
+    public class ProductValidator : AbstractValidator<SaveProduct>
     {
         public ProductValidator() 
         {

@@ -13,13 +13,13 @@ namespace ProductManagement.Api.Tests
     public class ProductControllerTests
     {
         private readonly IProductService _productServiceMock;
-        private readonly IValidator<Product> _productValidatorMock;
+        private readonly IValidator<SaveProduct> _productValidatorMock;
         private readonly ProductController _productController;
 
         public ProductControllerTests()
         {
             _productServiceMock = Substitute.For<IProductService>();
-            _productValidatorMock = Substitute.For<IValidator<Product>>();
+            _productValidatorMock = Substitute.For<IValidator<SaveProduct>>();
 
             _productController = new ProductController(
                 Substitute.For<ILogger<ProductController>>(),
@@ -45,7 +45,7 @@ namespace ProductManagement.Api.Tests
         [Fact]
         public async Task SaveProduct_HappyPath()
         {
-            var product = new Product
+            var product = new SaveProduct
             {
                 ProductCode = "P001",
                 Name = "Product 1",
@@ -76,7 +76,7 @@ namespace ProductManagement.Api.Tests
         [Fact]
         public async Task SaveProduct_ValidationFailure()
         {
-            var product = new Product
+            var product = new SaveProduct
             {
                 ProductCode = "",
                 Name = "",
@@ -103,7 +103,7 @@ namespace ProductManagement.Api.Tests
         [Fact]
         public async Task SaveProduct_SavingFailure()
         {
-            var product = new Product
+            var product = new SaveProduct
             {
                 ProductCode = "P001",
                 Name = "Product 1",
